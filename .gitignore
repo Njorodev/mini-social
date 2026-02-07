@@ -1,0 +1,21 @@
+# Python environment
+venv/
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database & Migrations
+*.db
+alembic/versions/*.pyc
+
+# Local uploads (User images/avatars)
+uploads/
+
+# IDE specific
+.vscode/
+.idea/
+
+# OS specific
+Thumbs.db
+desktop.ini

@@ -19,7 +19,7 @@ if config.config_file_name is not None:
 db_url = URL.create(
     drivername="postgresql+psycopg2",
     username="postgres",
-    password="#Frank@mysql001",
+    password="anonymous",
     host="localhost",
     port=5432,
     database="Social_media",
