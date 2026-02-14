@@ -1,21 +1,44 @@
-# Python environment
-venv/
-.env
+### Python ###
 __pycache__/
 *.py[cod]
 *$py.class
+venv/
+.venv/
+env/
+build/
+dist/
+*.egg-info/
 
-# Database & Migrations
+### Environment & Secrets ###
+.env
+.flaskenv
+*.secret
+
+### Database ###
 *.db
-alembic/versions/*.pyc
+*.sqlite3
+# If using local PostgreSQL data folders
+pgdata/
 
-# Local uploads (User images/avatars)
-uploads/
+### Uploads & Media ###
+# Ignore the actual images but keep the folder if needed
+uploads/*
+!uploads/.gitkeep
 
-# IDE specific
+### Testing ###
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+.anyio_cache/
+
+### IDEs & OS ###
 .vscode/
 .idea/
-
-# OS specific
+*.swp
+*.swo
+.DS_Store
 Thumbs.db
-desktop.ini
