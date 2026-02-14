@@ -1,7 +1,4 @@
-from sqlalchemy import (
-    Column, Integer, String, Text, ForeignKey,
-    DateTime, Boolean, UniqueConstraint
-)
+from sqlalchemy import (Column, Integer, String, Text, ForeignKey, DateTime, Boolean, UniqueConstraint)
 from sqlalchemy.orm import relationship
 from datetime import datetime, timezone
 from app.db.base import Base
@@ -80,11 +77,11 @@ class Follow(Base):
 
 class RefreshToken(Base):
     __tablename__ = "refresh_tokens"
-
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
-    token_hash = Column(String, nullable=False, index=True)
-    revoked_at = Column(DateTime, nullable=True) # For logout flow
-    expires_at = Column(DateTime, nullable=False)
+    token_hash = Column(String, unique=True, index=True)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    expires_at = Column(DateTime)
+    revoked_at = Column(DateTime, nullable=True) # Used for logout
 
     user = relationship("User", back_populates="refresh_tokens")

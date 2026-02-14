@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
 
 class Settings(BaseSettings):
@@ -17,9 +17,12 @@ class Settings(BaseSettings):
     # File Uploads
     UPLOAD_DIR: str = "uploads"
 
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    # This replaces 'class Config' entirely in Pydantic V2
+    model_config = SettingsConfigDict(
+        env_file=".env", 
+        extra="ignore",
+        case_sensitive=True
+    )
 
 # THE CRITICAL LINE:
 settings = Settings()
